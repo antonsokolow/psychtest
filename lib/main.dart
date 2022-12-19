@@ -1,13 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import './question.dart';
-import './answer.dart';
 import './result.dart';
 import './start.dart';
 import './questions.dart';
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,20 +43,10 @@ class MyApp extends HookWidget {
               return Start(startTest);
             }
             if (counter.value < questions.length) {
-              return Column(
-                children: <Widget>[
-                  Text(''),
-                  Question(questions[counter.value]['question']),
-                  ...(questions[counter.value]['answers'] as List<String>)
-                      .asMap()
-                      .entries
-                      .map((answer) {
-                    int answerIdx = answer.key;
-                    String answerText = answer.value;
-                    return Answer(answerIdx, answerText, answerQuestion);
-                  }).toList(),
-                ],
-              );
+              return Quiz(
+                  question: questions[counter.value]['question'],
+                  answers: questions[counter.value]['answers'],
+                  answerQuestion: answerQuestion);
             } else {
               return Result(correctAnswers.value, restart);
             }

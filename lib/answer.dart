@@ -11,9 +11,14 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ElevatedButton(
-        child: Text(answerText,textAlign: TextAlign.left, style: (TextStyle()),),
-        style:
-            ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.blue), alignment: Alignment.centerLeft),
+        child: Text(
+          answerText,
+          textAlign: TextAlign.left,
+          style: (TextStyle()),
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(Colors.blue),
+            alignment: Alignment.centerLeft),
         onPressed: () => answerHandler(answerIdx),
       ),
       width: double.infinity,
